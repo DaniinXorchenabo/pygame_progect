@@ -1226,6 +1226,10 @@ class Question():
                 if self.opens[2]:
                     self.shars[1] += '^' 
                 a = 'see'
+                import make_massivs
+                make_massivs.func(self.clik_class.m0, self.clik_class.r,
+                                  graph=True)
+                self.clik_class
             self.answer_qu[0] = a
 
 
@@ -1424,8 +1428,8 @@ def game_screen_control(i):
         screen.fill((0, 0, 0))
         shop_shar.render() 
     elif why_screen[0] == "game_over":
-        if shop_shar.shars != [0,'-']:
-            shop_shar.shars = [0,'-']
+        if shop_shar.shars != [0, '-']:
+            shop_shar.shars = [0, '-']
         for i in pygame.event.get():
             if i.type == pygame.QUIT:
                 running[0] = False 
@@ -1434,7 +1438,7 @@ def game_screen_control(i):
                     screen_over.mouse = i.pos 
             elif i.type == pygame.KEYDOWN:
                 if str(i.key) == '13':
-                    screen_over.mouse =(-1,-1)
+                    screen_over.mouse = (-1, -1)
                     screen_menu.repit()
                     why_screen[0] = 'menu'
                     osn_play.coins = 0
@@ -1481,7 +1485,7 @@ try:
     shars[0] = int(shars[0])
     f.close()
 except Exception:
-    shars = [1,'-']
+    shars = [1, '-']
 if shars[0] not in range(1, 5):
     shars[0] = 1
 if shars[1] == '-' and shars[0] != 1:
@@ -1507,7 +1511,7 @@ music = Music()
 osn_play = PlayClass(max_h, time_max, extremums, extremums_sp,
                      fps, coins, sputnics,
                      missiles, prticles, who_shar=shars[0])
-shop_screen = MissileShop(osn_play, 60, extremums,who_shar=shars[0])
+shop_screen = MissileShop(osn_play, 60, extremums, who_shar=shars[0])
 shop_shar = ShopShar(shars, osn_play, shop_screen)
 screen_over = OverScreen()
 learn_class = LearnClass()
