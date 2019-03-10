@@ -262,7 +262,7 @@ class Missiles(pygame.sprite.Sprite):
         
     def create_group_parts(self, group):
         Missiles.group_parts = group
-        Missiles.sound1 = pygame.mixer.Sound('boom.wav')
+        Missiles.sound1 = pygame.mixer.Sound('1/boom.wav')
 
 
 class Sputnics(pygame.sprite.Sprite):
@@ -815,7 +815,7 @@ class MissileShop():
         self.coin_rect1 = self.coin_image.get_rect(bottom=330, centerx=475)
         self.coin_rect2 = self.coin_image.get_rect(bottom=330, centerx=525)
         self.coin_rect3 = self.coin_image.get_rect(centery=45, left=10)
-        self.fon = pygame.image.load("1/fon4.png").convert()
+        self.fon = pygame.image.load("1/fon6.png").convert()
         open_img = "1/start_button2.png"
         self.start_button_img = pygame.image.load(open_img).convert_alpha()
         open_img = "1/menu_button2.png"
@@ -1502,7 +1502,7 @@ prticles = pygame.sprite.Group()
 for i in range(choice(range(8, 16))):
     Sputnics(sputnics)
 sputnics.sprites()[0].create_group_parts(prticles)
-why_screen = ['menu', -1720, 490]
+why_screen = ['menu', -1950, 490]
 music = Music()
 osn_play = PlayClass(max_h, time_max, extremums, extremums_sp,
                      fps, coins, sputnics,
