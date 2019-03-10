@@ -873,6 +873,8 @@ class MissileShop():
         self.mouse_img, self.mouse_img_rect = None, None
         self.ch = 0
         self.tupe_pul = -1
+        self.surf_black1 = pygame.Surface((1000,600), pygame.SRCALPHA)
+        self.surf_black1.fill((0, 0, 0, 150))        
         top_l_list = [self.board_shop.board_bul[0][0][1],
                       self.board_shop.board_bul[0][1][1],
                       self.board_shop.board_bul[0][2][1],
@@ -1007,7 +1009,9 @@ class MissileShop():
             string = 'mass_' + str(mo) + '_' + str(self.r)
             masss = importlib.import_module(string)
         except Exception:
-                         
+            screen.blit(self.surf_black1, (0, 0))
+            screen.blit(self.logining_text, self.logining_text_rect) 
+            pygame.display.flip()                         
             self.loading = True
             print('ex')
             #local_rect = pygame.Rect(0,0,1000,600)
@@ -1054,7 +1058,8 @@ class MissileShop():
         if self.loading:
             print("===================================")
             screen.fill((0, 0, 0, 150))
-            screen.blit(self.logining_text, self.logining_text_rect)   
+            screen.blit(self.logining_text, self.logining_text_rect) 
+            pygame.display.flip()
         #screen.fill((0, 0, 0, 150))
         #screen.blit(self.logining_text, self.logining_text_rect)               
         if str(self.down_button) == '1':
@@ -1151,7 +1156,7 @@ class Product():
         self.text_rect = self.text.get_rect(topleft=(self.rect.left,
                                                      self.rect.bottom))
         self.surf_black1 = pygame.Surface(self.rect.size, pygame.SRCALPHA)
-        self.surf_black1.fill((0, 0, 0, 150))
+        self.surf_black1.fill((0, 0, 0, 150))       
         pep8 = self.ok_change[0].get_rect(center=self.rect.center)
         self.ok_change_rect = pep8
         
@@ -1186,6 +1191,12 @@ class Product():
 class Question():
     def __init__(self, mass, shars, shop_class,
                  osn_play, shar1_class):
+        self.font4 = pygame.font.Font(None, 50)
+        self.logining_text = self.font4.render('Динамика полёта...',
+                                               1, (255, 255, 255))
+        self.logining_text_rect = self.logining_text.get_rect(center=(500,300))
+        self.surf_black2 = pygame.Surface((1000, 600), pygame.SRCALPHA)
+        self.surf_black2.fill((0, 0, 0, 150))         
         self.osn_play = osn_play
         self.opens = mass
         self.shars = shars
@@ -1226,6 +1237,9 @@ class Question():
                 if self.opens[2]:
                     self.shars[1] += '^' 
                 a = 'see'
+                screen.blit(self.surf_black2, (0, 0))
+                screen.blit(self.logining_text, self.logining_text_rect)  
+                pygame.display.flip()
                 import make_massivs
                 make_massivs.func(self.clik_class.m0, self.clik_class.r,
                                   graph=True)
